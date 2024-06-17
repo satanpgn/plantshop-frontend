@@ -59,9 +59,21 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link fw-bold" to={"/product"}
                 style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
-                  Products
+                  Accounts
                 </Link>
-              </li>              
+              </li>  
+              <li className="nav-item">
+                <Link className="nav-link fw-bold" to={"/product"}
+                style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
+                  Transfer
+                </Link>
+              </li>     
+              <li className="nav-item">
+                <Link className="nav-link fw-bold" to={"/product"}
+                style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
+                  Services
+                </Link>
+              </li>           
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle fw-bold"
@@ -71,13 +83,13 @@ const Navbar = () => {
                   aria-expanded="false"
                   style={{ fontFamily: 'Tisa Offc Serif Pro'}}
                 >
-                  Top Selling
+                  Account Type
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="#"
                     style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
-                      Money Plant
+                      Saving
                     </Link>
                   </li>
                   <li>
@@ -86,7 +98,7 @@ const Navbar = () => {
                   <li>
                     <Link className="dropdown-item" to="#"
                     style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
-                      Snake Plant
+                     Current
                     </Link>
                   </li>
                   <li>
@@ -95,13 +107,23 @@ const Navbar = () => {
                   <li>
                     <Link className="dropdown-item" to="#"
                     style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
-                      Cactus
+                      Fixed/Deposit
                     </Link>
                   </li>
                 </ul>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link fw-bold" to={"/product"}
+                style={{ fontFamily: 'Tisa Offc Serif Pro'}}>
+                  About Us
+                </Link>
+              </li>  
             </ul>
+            
           </div>
+
+        
+          
           <div className="d-flex">
             {/* Add to Cart Button */}
             <Link to="/cart" className="btn btn-outline-success me-2">
