@@ -86,9 +86,9 @@ const AdminDashboard = () => {
         <>
             <div className='m-4'>
                 <div className='d-flex justify-content-between'>
-                    <h1>Admin Dashboard</h1>
+                    <h1>Admin Panel</h1>
 
-                    <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add Product
                     </button>
 
@@ -152,7 +152,7 @@ const AdminDashboard = () => {
                     <tbody>
                         {
                             products.map((item) => (
-                                <tr>
+                                <tr key={item._id}>
                                     <td>
                                         <img src={item.productImageUrl} height={40} width={40} />
                                     </td>
@@ -167,8 +167,8 @@ const AdminDashboard = () => {
                                         </div>
                                     </td>
                                 </tr>
-                            ))
-                        }
+                            ))}
+                        
                     </tbody>
                 </table>
 
@@ -179,3 +179,144 @@ const AdminDashboard = () => {
 }
 
 export default AdminDashboard
+// import React, { useState, useEffect } from 'react';
+// import { createProductApi, deleteProductApi, getAllProductsApi } from '../../apis/Api';
+// import { toast } from 'react-toastify';
+// import { Link } from 'react-router-dom';
+
+// const AdminDashboard = () => {
+//     const [productName, setProductName] = useState('');
+//     const [productPrice, setProductPrice] = useState('');
+//     const [productDescription, setProductDescription] = useState('');
+//     const [productCategory, setProductCategory] = useState('');
+//     const [productImage, setProductImage] = useState(null);
+//     const [previewImage, setPreviewImage] = useState(null);
+//     const [products, setProducts] = useState([]);
+
+//     useEffect(() => {
+//         loadProducts();
+//     }, []);
+
+//     const loadProducts = async () => {
+//         try {
+//             const res = await getAllProductsApi();
+//             setProducts(res.data.products);
+//         } catch (error) {
+//             console.error('Error loading products:', error);
+//             toast.error('Failed to load products');
+//         }
+//     };
+
+//     const handleImageUpload = (event) => {
+//         const file = event.target.files[0];
+//         setProductImage(file);
+//         setPreviewImage(URL.createObjectURL(file));
+//     };
+
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         const formData = new FormData();
+//         formData.append('productName', productName);
+//         formData.append('productPrice', productPrice);
+//         formData.append('productDescription', productDescription);
+//         formData.append('productCategory', productCategory);
+//         formData.append('productImage', productImage);
+
+//         try {
+//             const res = await createProductApi(formData);
+//             if (res.data.success) {
+//                 toast.success(res.data.message);
+//                 loadProducts();
+//             } else {
+//                 toast.error(res.data.message);
+//             }
+//         } catch (error) {
+//             console.error('Error creating product:', error);
+//             toast.error('Failed to create product');
+//         }
+//     };
+
+//     const handleDelete = async (id) => {
+//         const confirmDelete = window.confirm('Are you sure you want to delete this product?');
+//         if (!confirmDelete) return;
+
+//         try {
+//             const res = await deleteProductApi(id);
+//             if (res.data.success) {
+//                 toast.success(res.data.message);
+//                 loadProducts();
+//             } else {
+//                 toast.error(res.data.message);
+//             }
+//         } catch (error) {
+//             console.error('Error deleting product:', error);
+//             toast.error('Failed to delete product');
+//         }
+//     };
+
+//     // Placeholder function for handling View Orders
+//     const handleViewOrders = () => {
+//         // Implement your logic for viewing orders here
+//         console.log('View Orders clicked');
+//     };
+
+//     return (
+//         <div className="m-4">
+//             <div className='d-flex justify-content-between'>
+//                 <h1>Admin Panel</h1>
+
+//                 <div>
+//                     <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+//                         Add Product
+//                     </button>
+//                     <button type="button" className="btn btn-primary" onClick={handleViewOrders}>
+//                         View Orders
+//                     </button>
+//                 </div>
+//             </div>
+
+//             {/* Add Product Modal */}
+//             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//                 {/* Modal content */}
+//             </div>
+
+//             {/* Product Table */}
+//             <table className='table mt-2'>
+//                 {/* Table header */}
+//                 <thead className='table-dark'>
+//                     <tr>
+//                         <th>Product Image</th>
+//                         <th>Product Name</th>
+//                         <th>Product Price</th>
+//                         <th>Product Category</th>
+//                         <th>Product Description</th>
+//                         <th>Actions</th>
+//                     </tr>
+//                 </thead>
+//                 {/* Table body */}
+//                 <tbody>
+//                     {/* Render products */}
+//                     {products.map((item) => (
+//                         <tr key={item._id}>
+//                             <td>
+//                                 <img src={item.productImageUrl} height={40} width={40} alt="Product" />
+//                             </td>
+//                             <td>{item.productName}</td>
+//                             <td>NPR.{item.productPrice}</td>
+//                             <td>{item.productCategory}</td>
+//                             <td>{item.productDescription.slice(0, 10)}</td>
+//                             <td>
+//                                 <div className="btn-group" role="group" aria-label="Basic example">
+//                                     <Link to={`/admin/edit/${item._id}`} type="button" className="btn btn-success">Edit</Link>
+//                                     <button onClick={() => handleDelete(item._id)} type="button" className="btn btn-danger">Delete</button>
+//                                 </div>
+//                             </td>
+//                         </tr>
+//                     ))}
+//                 </tbody>
+//             </table>
+//         </div>
+//     );
+// };
+
+// export default AdminDashboard;

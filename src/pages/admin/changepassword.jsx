@@ -56,7 +56,7 @@ const ChangePassword = () => {
         <div className="card p-4 rounded shadow-lg" style={{ maxWidth: '400px', marginLeft: '20px' }}>
         <center>
         <img
-        src="/images/changepassword.png" 
+        src="/images/reset-password.png" 
         alt="Change Password"
         style={{ width: '80%', height: '40%' }}
       /></center>
